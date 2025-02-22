@@ -1,0 +1,16 @@
+.quiz-div {
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+}
+.question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.question label {
+    margin-bottom: 20px;
+}
+.next {
+    width: 100px;
+}
