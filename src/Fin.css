@@ -1,0 +1,60 @@
+.fin-div {
+    height: 100vh;
+    background-color: lightpink;
+}
+.quest-ans {
+    border: 3px solid hotpink;
+    margin-bottom: 2px;
+    width: 500px;
+}
+.answers-div {
+    background-color: lightpink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.kaneki {
+    width: 300px;
+    height: 500px;
+}
+.eclipse {
+    width: 500px;
+    height: 400px;
+}
+.myz {
+    width: 500px;
+    height: 400px;
+    padding-top: 100px;
+}
+.img-div-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.me {
+    width: 400px;
+    height: 500px;
+}
+.ski {
+    width: 400px;
+    height: 500px;
+}
+.img-div-2 {
+    display: flex;
+    justify-content: space-between;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.spin {
+    animation: spin 5s linear infinite;
+}
+.spin {
+    margin-left: 5px;
+}

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import choices from './Questions';
 import './Quiz.css';
+import { useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Quiz() {
+    const navigate = useNavigate();
     const [ currQuest, setCurrQuest ] = useState(0);
     const [ score, setScore ] = useState(0);
     const [ selected, setSelected ] = useState('');
@@ -24,13 +28,18 @@ export default function Quiz() {
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const finalScore = score + (selected === choices[currQuest].correct ? 1 : 0)
+        navigate('/fin', { state: { score: finalScore } });
+    }
+
     const { quest, c1, c2, c3, c4 } = choices[currQuest];
 
     return (
             <div className="quiz-div">
-                <h1>Answer to the best of your abilities!</h1>
+                <h1>Question {choices[currQuest].id}/20</h1>
                 <div className="question">
-                        <p>Question {choices[currQuest].id}/20 </p>
                         <h3>{quest}</h3>
                         <label>
                             <input 
@@ -72,13 +81,26 @@ export default function Quiz() {
                             />
                             {c4}
                         </label>
-                        <button 
-                        onClick={handleNext} 
-                        className="next" 
-                        disabled={!selected}
-                        >
-                        Next
-                        </button>
+                        {currQuest < choices.length -1 && (
+                            <Button 
+                            onClick={handleNext} 
+                            className="next" 
+                            disabled={!selected}
+                            color='info'
+                            >
+                            Next
+                            </Button>
+                        )}
+                        {currQuest === choices.length -1 && (
+                            <Button
+                            onClick={handleSubmit}
+                            className="submit"
+                            disabled={!selected}
+                            color='success'
+                            >
+                            Submit
+                            </Button>
+                        )}
                     </div>
             </div>
     )
